@@ -1,0 +1,13 @@
+clc;clear;
+%转换时间格式，取数据
+num1=transform_time('./文件1.xlsx','./shuju1.xlsx');
+num2=transform_time('./文件2.xlsx','./shuju2.xlsx');
+num3=transform_time('./文件3.xlsx','./shuju3.xlsx');
+%对时间不连续点且间隔小于等于4s，插值
+[suminsertnum1,num11]=insertV('./shuju1.xlsx','./shuju1xx.xlsx',4); 
+[suminsertnum2,num22]=insertV('./shuju2.xlsx','./shuju2xx.xlsx',4); 
+[suminsertnum3,num33]=insertV('./shuju3.xlsx','./shuju3xx.xlsx',4); 
+%统计插值后的间断点数和索引
+[break_num1,break_ind1]=search_break('./shuju1xx.xlsx');
+[break_num2,break_ind2]=search_break('./shuju2xx.xlsx');
+[break_num3,break_ind3]=search_break('./shuju3xx.xlsx');
